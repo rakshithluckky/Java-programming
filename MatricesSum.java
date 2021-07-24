@@ -30,5 +30,4 @@ public class MatricesSum {
             System.out.println("");
         }
     }
-    
 }
