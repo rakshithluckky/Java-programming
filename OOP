@@ -1,0 +1,101 @@
+public class Print {
+    public static void Sop(Object o){
+        System.out.print(o);
+    }
+    public static void Sopln(Object o){
+        System.out.println(o);
+    }
+}
+
+
+package suzuki;
+
+import print.*;
+
+public class Car {
+    String name;
+    int price,gears;
+    private String model;
+   
+    Car(){//Constructor
+        name="Suzuki";
+        price=30000;
+        gears=5;
+        Print.Sopln("Constructor of the parent class");
+    }
+    protected void setMod(String mod){
+        model=mod;
+    }
+    protected String getMod(){
+        return model;
+    }
+    public void print(){
+        Print.Sopln("Name of the company is "+name);
+        Print.Sopln("Price of the car is "+price);
+        Print.Sopln("Number of gears are "+gears);
+    }
+}
+
+
+package suzuki;
+
+public class Shape {
+    
+    private String name="Rectangle";
+    private int a=0, b=0;
+    
+    public void setName(String n){
+        name=n;
+    }
+    public String getName(){
+        return name;
+    }
+    public void setSize(int A, int B){
+        a=A;
+        b=B;
+    }
+    public void setSize(int r){//method overloading
+        a=r;
+    }
+    public double getArea(){
+        double area=Math.PI*a*a;
+        return area;
+    }
+    public double getArea(int b){//method overloading
+        double area=a*this.b;//"this" means specifying global variable in setSize
+        return area;
+    }
+}
+
+
+package suzuki;
+import java.util.*;
+import print.*;
+public class Suzuki extends Car{
+    Suzuki(){
+        Print.Sopln("Constructor of the child class");
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Shape c = new Shape();
+        Shape r = new Shape();
+        c.setName("Circle");
+        c.setSize(10);
+        r.setSize(1,50);
+        double ar_c=c.getArea();
+        Print.Sopln("Area of the Circle is "+ar_c);
+        Print.Sopln("Area of the Rectangle is "+r.getArea(100));
+        Print.Sopln("");
+        Car car= new Car();
+        car.setMod("P100");
+        Print.Sopln("Model of the Car is "+car.getMod());
+        car.print();
+        Print.Sopln("");
+        Suzuki s = new Suzuki();
+        s.setMod("M300");
+        Print.Sopln("Model of the Car is "+s.getMod());
+        s.print();
+    }
+    
+}
